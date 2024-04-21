@@ -38,6 +38,10 @@ defaults write com.apple.finder DisableAllAnimations -bool true
 defaults write com.apple.Mail DisableSendAnimations -bool true
 defaults write com.apple.Mail DisableReplyAnimations -bool true
 ```
+## Useful Softwares
+These software are useful can be downloaded via apple app store
+1. HiddenBar
+1. Raycast
 
 ### Resources
 https://dev.to/synecdokey/nix-on-macos-2oj3
