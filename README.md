@@ -46,3 +46,4 @@ These software are useful can be downloaded via apple app store
 ### Resources
 https://dev.to/synecdokey/nix-on-macos-2oj3
 https://gist.github.com/nat-418/d76586da7a5d113ab90578ed56069509
+https://github.com/lysyi3m/macos-terminal-themes/blob/master/themes/Jellybeans.terminal
