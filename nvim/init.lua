@@ -1,9 +1,10 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-vim.g.have_nerd_font = true
+vim.g.mapleader = " "
 
-require 'options'
-require 'autocmd'
-require 'lazy-bootstrap'
-
-vim.cmd("colorscheme jellybeans")
+require("autocmd")
+require("options")
+require("keymaps")
+require("oil")
+require("lsp")
+require("netrw")
+require("statusline")
+require("format")
