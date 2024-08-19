@@ -30,6 +30,10 @@ defaults write com.apple.Mail DisableReplyAnimations -bool true
 ```
 git config --global alias.logline "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 ```
+After running the command above add the following alias to the zshrc file.
+```
+alias gl="git logline"
+```
 
 ## Useful Softwares
 These software are useful can be downloaded via apple app store
