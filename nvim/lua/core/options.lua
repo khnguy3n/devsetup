@@ -23,7 +23,7 @@ opt.autoindent = true
 
 -- Make neovim use the system clipboard
 vim.schedule(function()
-  opt.clipboard = "unnamedplus"
+	opt.clipboard = "unnamedplus"
 end)
 
 -- Disable old vim status
@@ -104,6 +104,16 @@ opt.backspace = "indent,eol,start"
 opt.wildignorecase = true
 opt.wildmode = "full"
 opt.shell = "/usr/bin/zsh"
+vim.o.whichwrap = "bs<>[]hl"
+vim.o.pumheight = 10
+vim.o.conceallevel = 0
+vim.wo.signcolumn = "yes"
+vim.o.fileencoding = "utf-8"
+vim.o.backup = false
+vim.o.writebackup = false
+vim.opt.shortmess:append("c")
+vim.opt.iskeyword:append("-")
+vim.opt.formatoptions:remove({ "c", "r", "o" })
 
 -- Disable certain builtins
 g.loaded_netrw = 1
