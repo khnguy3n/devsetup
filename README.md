@@ -57,3 +57,4 @@ devbox global rm bat
 2. [HiddenBar](https://github.com/dwarvesf/hidden)
 3. [Rectangle](https://rectangleapp.com)
 4. [Posting](https://github.com/darrenburns/posting)
+5. [Harlequin](https://harlequin.sh)
