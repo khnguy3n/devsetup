@@ -1,12 +1,8 @@
-## Neovim Instructions
-1. Copy the nvim folder to .config directory
-1. Open nvim and run the following command
-    ```
-    :Lazy
-    ```
-1. Run the update for Lazy
+# Khanh DevSetup
+
 ## Disable All Animations
-```
+
+```zsh
 defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
 defaults write -g NSScrollAnimationEnabled -bool false
 defaults write -g NSWindowResizeTime -float 0.001
@@ -25,24 +21,35 @@ defaults write com.apple.finder DisableAllAnimations -bool true
 defaults write com.apple.Mail DisableSendAnimations -bool true
 defaults write com.apple.Mail DisableReplyAnimations -bool true
 ```
+## Ghostty
 
-## Git log single line pretty
+Install Ghostty [here](https://ghostty.org).
+
+## DevBox
+
+Install Devbox
 ```
-git config --global alias.logline "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+curl -fsSL https://get.jetify.com/devbox | bash
 ```
-After running the command above add the following alias to the zshrc file.
-```
-alias gl="git logline"
+[Documentation](https://www.jetify.com/docs/devbox/devbox_global/) to leverage Devbox as primary package manager.
+
+### Install dependencies
+Once Devbox is installed use it to install dependencies like bat, eza, Neovim, ripgrep, ect.
+```shell
+#Use the following command to list out global installed dependencies
+devbox global list
+
+#Install example
+devbox global add bat eza ripgrep
+
+#Removal example
+devbox global rm bat
 ```
 
-## Useful Softwares
-These software are useful can be downloaded via apple app store
-1. Harlequin
-1. HiddenBar
-1. Raycast
+## Neovim Setup
+1. Clone this repo
+2. Move the nvim folder to .config/nvim
+3. Open nvim and Lazy should install plugins
+4. To check run ```:Lazy```
 
-### Resources
-https://gist.github.com/nat-418/d76586da7a5d113ab90578ed56069509
-https://github.com/lysyi3m/macos-terminal-themes/blob/master/themes/Jellybeans.terminal
-https://ma.ttias.be/pretty-git-log-in-one-line/
-https://harlequin.sh/docs/getting-started
+
