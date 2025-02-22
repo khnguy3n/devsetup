@@ -52,4 +52,7 @@ devbox global rm bat
 3. Open nvim and Lazy should install plugins
 4. To check run ```:Lazy```
 
-
+## Other Useful Software
+1. [Raycast](https://www.raycast.com)
+2. [HiddenBar](https://github.com/dwarvesf/hidden)
+3. [Rectangle](https://rectangleapp.com)
