@@ -21,9 +21,6 @@ defaults write com.apple.finder DisableAllAnimations -bool true
 defaults write com.apple.Mail DisableSendAnimations -bool true
 defaults write com.apple.Mail DisableReplyAnimations -bool true
 ```
-## Ghostty
-
-Install Ghostty [here](https://ghostty.org).
 
 ## DevBox
 
@@ -51,6 +48,37 @@ devbox global rm bat
 2. Move the nvim folder to .config/nvim
 3. Open nvim and Lazy should install plugins
 4. To check run ```:Lazy```
+
+
+# Create SSH key for github/gitlab
+```
+mkdir ~/.ssh
+cd ~/.ssh
+touch config
+vi config
+
+#Personal github
+Host github github.com
+    HostName github.com
+    IdentityFile ~/.ssh/personal
+
+ssh-keygen -t ecdsa -C "example@gmail.com"
+
+#Type 'personal' for first question
+
+#Copy personal.pub file content
+pbcopy < ~/.ssh/personal.pub
+
+#Add ssh key on website
+
+ssh-add ~/.ssh/personal
+ssh -T git@github.com
+```
+# Set Neovim as git editor
+git config --global core.editor "nvim"
+export GIT_EDITOR=nvim
+
+
 
 ## Other Useful Software
 1. [Raycast](https://www.raycast.com)
