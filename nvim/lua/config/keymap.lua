@@ -1,3 +1,6 @@
+-- Move Lines
+-- vim.keymap.set({ 'n', 'x' }, '<A-k>', ':move -2<cr>', { desc = 'Move Line Up' })
+
 -- Set leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
