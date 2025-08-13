@@ -7,6 +7,7 @@ alias lt="eza --tree --level=2 --icons"
 alias vi="nvim"
 alias hc="history -p"
 alias gs="git status"
+alias gp="git push"
 alias gco="git checkout"
 alias gfb="git branch --all | grep "
 
