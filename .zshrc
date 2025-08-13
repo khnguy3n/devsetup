@@ -1,0 +1,13 @@
+alias c="clear"
+alias ..="cd .."
+alias ...="cd ../.."
+alias l="eza -lbF --git"
+alias ls="eza --icons=always --color=always --group-directories-first"
+alias lt="eza --tree --level=2 --icons"
+alias vi="nvim"
+alias hc="history -p"
+alias gs="git status"
+alias gco="git checkout"
+alias gfb="git branch --all | grep "
+
+eval "$(devbox global shellenv)"
