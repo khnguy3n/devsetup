@@ -4,7 +4,8 @@
     "ripgrep@latest",
     "neovim@latest",
     "bat@latest",
-    "eza@latest"
+    "eza@latest",
+    "fzf@latest"
   ],
   "shell": {
     "init_hook": [
