@@ -86,3 +86,6 @@ export GIT_EDITOR=nvim
 3. [Rectangle](https://rectangleapp.com)
 4. [Posting](https://github.com/darrenburns/posting)
 5. [Harlequin](https://harlequin.sh)
+
+## Additional Resources
+1. [MacOS Terminal Themes](https://github.com/lysyi3m/macos-terminal-themes/tree/master)
