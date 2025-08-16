@@ -5,6 +5,7 @@
     "neovim@latest",
     "bat@latest",
     "eza@latest",
+    "sheldon@latest",
     "fzf@latest"
   ],
   "shell": {
