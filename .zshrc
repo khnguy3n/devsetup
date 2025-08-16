@@ -1,4 +1,5 @@
 alias c="clear"
+alias cat="bat --paging=never"
 alias ..="cd .."
 alias ...="cd ../.."
 alias l="eza -lbF --git"

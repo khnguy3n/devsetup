@@ -1,3 +1,6 @@
+-- Move Lines
+-- vim.keymap.set({ 'n', 'x' }, '<A-k>', ':move -2<cr>', { desc = 'Move Line Up' })
+
 -- Set leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -52,3 +55,8 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous dia
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
 vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
+
+
+-- NETRW
+--vim.keymap.set('n', '<leader>fe', '<Cmd>25Lexplore<CR>', { desc = 'Toggle Left-side netrw file explorer with 25 col width' })
+vim.keymap.set('n', '<leader>fe', '<Cmd>25Lexplore!<CR>', { desc = 'Toggle Left-side netrw file explorer with 25 col width' })
