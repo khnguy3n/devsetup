@@ -6,6 +6,11 @@
     "bat@latest",
     "eza@latest",
     "sheldon@latest",
+    "nodejs@latest",
+    "nodePackages.typescript@latest",
+    "nodePackages.typescript-language-server@latest",
+    "nodePackages.vscode-langservers-extracted@latest",
+    "lua-language-server@latest",
     "fzf@latest"
   ],
   "shell": {
