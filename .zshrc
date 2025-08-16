@@ -12,3 +12,4 @@ alias gco="git checkout"
 alias gfb="git branch --all | grep "
 
 eval "$(devbox global shellenv)"
+eval "$(sheldon source)"

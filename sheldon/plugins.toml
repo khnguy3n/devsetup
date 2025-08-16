@@ -1,0 +1,15 @@
+shell = "zsh"
+
+[plugins.zsh-autosuggestions]
+github = "zsh-users/zsh-autosuggestions"
+use = ["{{ name }}.zsh"]
+
+[plugins.zsh-fast-syntax]
+github = "zdharma/fast-syntax-highlighting"
+
+[plugins.prompt]
+github = "zap-zsh/zap-prompt"
+
+[plugins.vim]
+github = "softmoth/zsh-vim-mode"
+
