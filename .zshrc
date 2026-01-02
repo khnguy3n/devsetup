@@ -1,3 +1,5 @@
+source $HOME/.config/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+
 # Devbox global environment
 if command -v devbox >/dev/null 2>&1; then
   eval "$(devbox shellenv --config ~/.config/devbox/global)"
