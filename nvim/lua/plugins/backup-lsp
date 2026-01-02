@@ -1,0 +1,49 @@
+return {
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = {
+			{ "williamboman/mason.nvim", opts = {} },
+			{ "williamboman/mason-lspconfig.nvim", opts = {} },
+		},
+		config = function()
+			-- Mason setup
+			require("mason").setup()
+			require("mason-lspconfig").setup({
+				ensure_installed = { "lua_ls", "ts_ls" },
+				automatic_enable = true,
+			})
+
+			-- LSP attach function (keymaps, etc.)
+			local on_attach = function(_, bufnr)
+				local opts = { buffer = bufnr, silent = true }
+
+				-- Format buffer
+				vim.keymap.set("n", "<leader>f", function()
+					vim.lsp.buf.format({ async = true })
+				end, opts)
+
+				-- Optional: format selection in visual mode
+				vim.keymap.set("v", "<leader>f", function()
+					vim.lsp.buf.format({ async = true })
+				end, opts)
+			end
+
+			-- Lua LSP
+			vim.lsp.config("lua_ls", {
+				on_attach = on_attach,
+				settings = {
+					Lua = {
+						diagnostics = { globals = { "vim" } },
+						workspace = { checkThirdParty = false },
+						telemetry = { enable = false },
+					},
+				},
+			})
+
+			-- TypeScript LSP
+			vim.lsp.config("ts_ls", {
+				on_attach = on_attach,
+			})
+		end,
+	},
+}
