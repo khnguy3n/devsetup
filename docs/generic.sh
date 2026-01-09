@@ -1,9 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
 
-## Installing Rosetta
+echo "Setting General Stuff"
 
-
-## Generic useful settings
-```zsh
 # Show hidden MacOS folders
 defaults write com.apple.finder AppleShowAllFiles -boolean true ; killall Finder
 
@@ -34,9 +33,6 @@ sudo defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 defaults write com.apple.finder NewWindowTarget -string "PfHm"
 defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
 
-# Delete duplicates in the "Open with..." menu
-/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
-
 # Search in current folder by default
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 
@@ -54,4 +50,6 @@ defaults write com.apple.dock largesize -float 128
 # Accelerated opening
 defaults write com.apple.dock autohide-delay -float 0
 defaults write com.apple.dock autohide-time-modifier -float 0.4
-```
+
+# Disable natural scrolling (content follows scrollbar, not fingers)
+defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
