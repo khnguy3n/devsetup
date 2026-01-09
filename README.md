@@ -1,5 +1,10 @@
 # Khanh DevSetup
 
+## Install rosetta
+```zsh
+softwareupdate --install-rosetta --agree-to-license
+```
+
 ## Disable All Animations
 
 ```zsh
