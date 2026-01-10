@@ -88,6 +88,6 @@ devbox global list
 ```
 
 ## Additional Resources
-[Installation Documentation](https://www.jetify.com/docs/devbox/installing-devbox)
-[Global Documentation](https://www.jetify.com/docs/devbox/devbox_global/)
-[Horse's Mouth](https://www.jetify.com/docs/devbox)
+- [Installation Documentation](https://www.jetify.com/docs/devbox/installing-devbox)
+- [Global Documentation](https://www.jetify.com/docs/devbox/devbox_global/)
+- [Horse's Mouth](https://www.jetify.com/docs/devbox)
