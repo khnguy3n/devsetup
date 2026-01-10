@@ -1,4 +1,9 @@
-# Khanh DevSetup
+# Khanh DevSetup himmom
+
+## Install rosetta
+```zsh
+softwareupdate --install-rosetta --agree-to-license
+```
 
 ## Disable All Animations
 

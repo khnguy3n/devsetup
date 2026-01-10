@@ -58,5 +58,4 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagn
 
 
 -- NETRW
---vim.keymap.set('n', '<leader>fe', '<Cmd>25Lexplore<CR>', { desc = 'Toggle Left-side netrw file explorer with 25 col width' })
-vim.keymap.set('n', '<leader>fe', '<Cmd>25Lexplore!<CR>', { desc = 'Toggle Left-side netrw file explorer with 25 col width' })
+-- vim.keymap.set('n', '<leader>fe', '<Cmd>25Lexplore!<CR>', { desc = 'Toggle Left-side netrw file explorer with 25 col width' })

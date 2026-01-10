@@ -47,6 +47,3 @@ opt.autowrite = false
 
 opt.splitright = true
 opt.splitbelow = true
-
-
-
