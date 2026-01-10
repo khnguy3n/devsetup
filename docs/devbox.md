@@ -9,28 +9,38 @@ on a project's scope instead of global like what I'm doing here.
 - A shell hook so those binaries are always on your PATH
 
 # Setup Guide
-1. Go to Jetify Devbox installation documentation [here](https://www.jetify.com/docs/devbox/installing-devbox)
-2. Run the command to install devbox
-3. Once installed it maybe necessary to restart your terminal
-4. Run the following command to verify devbox's installation ```devbox version```
-5. Then create the devbox global config folder with the commands below and initialize
+1. Run the command to install devbox
+```
+curl -fsSL https://get.jetify.com/devbox | bash
+```
+2. Once installed it maybe necessary to restart your terminal
+3. Run the following command to verify devbox's installation ```devbox version```
+4. Then create the devbox global config folder with the commands below and initialize
 ```zsh
 mkdir -p ~/.config/devbox/global
 cd ~/.config/devbox/global
 devbox init
 ```
-6. Then in the global devbox folder run the following commands to add application
+5. Then in the global devbox folder run the following commands to add application
 ```zsh
 devbox add neovim bat ripgrep
 ```
 
-# Other useful details
-- To remove a global app - go back in the global folder and run following command
+# Other useful commands
+<em>All of the following needs to be in the "global" folder</em>
 ``` zsh
-devbox rm [target]
+devbox rm [target] # delete an app
+devbox list # list apps already installed
 ```
 
 # Gotchas
+- Although this doc says "global" it's not quite "global"
+When running following command you'll see it's not actually global
+```zsh
+devbox global list
+
+#will see warning
+```
 - Neovim plugins may sometimes needs to point to devbox locations for stuff like:
 
 | Gotcha | Resolution |
@@ -78,4 +88,6 @@ devbox rm [target]
 ```
 
 ## Additional Resources
+[Installation Documentation](https://www.jetify.com/docs/devbox/installing-devbox)
+[Global Documentation](https://www.jetify.com/docs/devbox/devbox_global/)
 [Horse's Mouth](https://www.jetify.com/docs/devbox)
