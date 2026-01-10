@@ -23,8 +23,18 @@ devbox init
 ```
 5. Then in the global devbox folder run the following commands to add application
 ```zsh
-devbox add neovim bat ripgrep
+devbox add [targt]
 ```
+### List of Apps I use
+1. bat - cat replacement
+2. eza - ls replacement
+3. ripgrep - search tool
+4. neovim - powerful editor
+5. fd - find alternative
+6. git
+7. nodejs
+8. zoxide - cd replacement
+9. tree-sitter
 
 # Other useful commands
 <em>All of the following needs to be in the "global" folder</em>
@@ -46,8 +56,16 @@ devbox global list
 | Gotcha | Resolution |
 |:-------|:-----------|
 | When trying to use lsp | Instead of having devbox install lsp. I've leverage mason as a plugin to install languages servers I may need.|
-|When trying to use fugit2 neovim plugin  | Ensure libgit2 was installed and update plugin to point to libgit2 location from devbox. See example below [fugit nvim devbox resolution](#Fugit2-and-Libgit2)|
+| When trying to use tree-sitter| Need to point it to where devbox installed tree-sitter. See example [below](tree-resolution)|
+|When trying to use fugit2 neovim plugin  | Ensure libgit2 was installed and update plugin to point to libgit2 location from devbox. See example [below](#Fugit2-and-Libgit2)|
 
+## Treesitter Resolution
+```
+-- lua/plugins/tree.lua
+local parser_install_dir = vim.fn.stdpath("cache") .. "/treesitters"
+vim.fn.mkdir(parser_install_dir, "p")
+vim.opt.runtimepath:append(parser_install_dir)
+```
 
 
 ## Fugit2 and Libgit2
