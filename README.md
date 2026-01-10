@@ -1,4 +1,4 @@
-# Khanh DevSetup himmom
+# Khanh DevSetup
 
 ## Install rosetta
 ```zsh

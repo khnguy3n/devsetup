@@ -53,3 +53,15 @@ defaults write com.apple.dock autohide-time-modifier -float 0.4
 
 # Disable natural scrolling (content follows scrollbar, not fingers)
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+
+# Check availability of updates daily
+defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+
+# Check for updates automatically
+sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
+
+# Safari: enable the Develop menu and the Web Inspector
+defaults write com.apple.Safari IncludeDevelopMenu -bool true
+defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -bool true
+
