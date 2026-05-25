@@ -1,5 +1,6 @@
-require('config.options')
-require('config.keymap')
-require('config.autocmds')
-require('config.lazy')
---require('config.lsp')
+vim.g.mapleader = " "
+
+require("options")
+require("autocmd")
+require("plugins")
+require("statusline")
