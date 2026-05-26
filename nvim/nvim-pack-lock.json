@@ -1,16 +1,8 @@
 {
   "plugins": {
-    "mason.nvim": {
-      "rev": "bb639d4bf385a4d89f478b83af4d770be05ab7eb",
-      "src": "https://github.com/mason-org/mason.nvim"
-    },
     "mini.nvim": {
       "rev": "44657837c7338e52727facc85c1d95bec1f6bd7c",
       "src": "https://github.com/nvim-mini/mini.nvim"
-    },
-    "mkdnflow.nvim": {
-      "rev": "f20732686f70f60f18f09f4befe984ae63a99201",
-      "src": "https://github.com/jakewvincent/mkdnflow.nvim"
     },
     "nvim-lspconfig": {
       "rev": "a4ed4e761c400849e8c9f8bda33e5083f890268c",

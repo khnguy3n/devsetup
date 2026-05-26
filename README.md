@@ -1,5 +1,10 @@
 # Khanh DevSetup
 
+## Table of Contents
+* [Install Rosetta](#install-rosetta)
+* [Disable All Animations](#disable-all-animations)
+* [Neovim Setup](#neovim-setup)
+
 ## Install rosetta
 ```zsh
 softwareupdate --install-rosetta --agree-to-license
@@ -27,32 +32,12 @@ defaults write com.apple.Mail DisableSendAnimations -bool true
 defaults write com.apple.Mail DisableReplyAnimations -bool true
 ```
 
-## DevBox
-
-Install Devbox
-```
-curl -fsSL https://get.jetify.com/devbox | bash
-```
-[Documentation](https://www.jetify.com/docs/devbox/devbox_global/) to leverage Devbox as primary package manager.
-
-### Install dependencies
-Once Devbox is installed use it to install dependencies like bat, eza, Neovim, ripgrep, ect.
-```shell
-#Use the following command to list out global installed dependencies
-devbox global list
-
-#Install example
-devbox global add bat eza ripgrep
-
-#Removal example
-devbox global rm bat
-```
-
 ## Neovim Setup
+> Need to have nodejs installed for the typescript-language server and biome.
+In addition leverage brew to install the following: biome, lua-language-server, marksman, stylua, typescript-language-server
+
 1. Clone this repo
 2. Move the nvim folder to .config/nvim
-3. Open nvim and Lazy should install plugins
-4. To check run ```:Lazy```
 
 
 # Create SSH key for github/gitlab
