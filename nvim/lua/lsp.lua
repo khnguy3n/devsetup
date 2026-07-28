@@ -3,13 +3,82 @@ capabilities = vim.tbl_deep_extend("force", capabilities, require("mini.completi
 
 vim.lsp.config("*", { capabilities = capabilities })
 
-vim.lsp.config("lua_ls", {
-    settings = {
+--vim.lsp.config("lua_ls", {
+--    settings = {
+--        Lua = {
+--            diagnostics = { globals = { "vim" } },
+--        },
+--    },
+--})
+
+local configs = {
+    lua_ls = {
+      cmd = { "lua-language-server" },
+      filetypes = { "lua" },
+      root_markers = {
+        { ".luarc.json", ".luarc.jsonc" },
+        { ".stylua.toml", "stylua.toml" },
+        { ".git" },
+      },
+      settings = {
         Lua = {
-            diagnostics = { globals = { "vim" } },
+          diagnostics = { globals = { "vim" } },
+          codeLens = { enable = true },
+          hint = { enable = true, semicolon = "Disable" },
         },
+      },
     },
-})
+
+    marksman = {
+      cmd = { "marksman", "server" },
+      filetypes = { "markdown", "markdown.mdx" },
+      root_markers = { ".marksman.toml", ".git" },
+    },
+
+    ts_ls = {
+      cmd = { "typescript-language-server", "--stdio" },
+      filetypes = {
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+      },
+      root_markers = {
+        {
+          "package-lock.json",
+          "yarn.lock",
+          "pnpm-lock.yaml",
+          "bun.lock",
+          "bun.lockb",
+        },
+        { ".git" },
+      },
+    },
+
+    biome = {
+      cmd = { "biome", "lsp-proxy" },
+      filetypes = {
+        "astro",
+        "css",
+        "graphql",
+        "html",
+        "javascript",
+        "javascriptreact",
+        "json",
+        "jsonc",
+        "svelte",
+        "typescript",
+        "typescriptreact",
+        "vue",
+      },
+      workspace_required = true,
+      root_markers = { "biome.json", "biome.jsonc" },
+    },
+  }
+
+  for name, config in pairs(configs) do
+    vim.lsp.config(name, config)
+  end
 
 vim.lsp.enable({
     "lua_ls",
