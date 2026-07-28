@@ -1,15 +1,3 @@
-vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "Go to definition" })
-vim.keymap.set('n', 'gr', vim.lsp.buf.references, { desc = "Go to references" })
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, { desc = "Format Local buffer" })
-vim.keymap.set("n", "df", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
-vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover documentation" })
-vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename symbol" })
-vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
-
-vim.diagnostic.config({ virtual_text = true })
-
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = vim.tbl_deep_extend("force", capabilities, require("mini.completion").get_lsp_capabilities())
 
@@ -60,11 +48,8 @@ vim.diagnostic.config({
 	},
 })
 
-do
-	local orig = vim.lsp.util.open_floating_preview
-	function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-		opts = opts or {}
-		opts.border = opts.border or "rounded"
-		return orig(contents, syntax, opts, ...)
-	end
+-- ponytail: monkey-patch for rounded borders; cleaner if upstream adds a global option
+local orig_preview = vim.lsp.util.open_floating_preview
+vim.lsp.util.open_floating_preview = function(contents, syntax, opts, ...)
+  return orig_preview(contents, syntax, vim.tbl_extend("keep", opts or {}, { border = "rounded" }), ...)
 end

@@ -28,6 +28,10 @@ vim.api.nvim_create_user_command("PackList", function()
   vim.pack.update(nil, { offline = true })
 end, {})
 
+vim.api.nvim_create_user_command('PackDel', function(opts)
+  vim.pack.del({ opts.args })
+end, { nargs = 1 })
+
 -- ============================================================================
 -- TreeSitter
 -- ============================================================================
@@ -80,11 +84,17 @@ vim.keymap.set("n", "<leader>/", function()
 	Snacks.picker.grep()
 end, { desc = "Grep files" })
 
+vim.keymap.set("n", "gd", Snacks.picker.lsp_definitions, { desc = "Goto Definition" })
+vim.keymap.set("n", "gD", Snacks.picker.lsp_declarations, { desc = "Goto Declaration" })
+vim.keymap.set("n", "gr", Snacks.picker.lsp_references, { desc = "References", nowait = true })
+vim.keymap.set("n", "gI", Snacks.picker.lsp_implementations, { desc = "Goto Implementation" })
+vim.keymap.set("n", "gy", Snacks.picker.lsp_type_definitions, { desc = "Goto Type Definition" })
+vim.keymap.set("n", "gai", Snacks.picker.lsp_incoming_calls, { desc = "Calls Incoming" })
+vim.keymap.set("n", "gao", Snacks.picker.lsp_outgoing_calls, { desc = "Calls Outgoing" })
+vim.keymap.set("n", "<leader>ss", Snacks.picker.lsp_symbols, { desc = "LSP Symbols" })
+
 -- ============================================================================
--- Mini - Completions
+-- Mini
 -- ============================================================================
-require("mini.completion").setup({
-    lsp_completion = {
-        auto_setup = true,
-    }
-})
+require("mini")
+
