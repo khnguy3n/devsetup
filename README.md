@@ -84,3 +84,5 @@ export GIT_EDITOR=nvim
 ## Additional Resources
 
 1. [MacOS Terminal Themes](https://github.com/lysyi3m/macos-terminal-themes/tree/master)
+2. [Terminal Themes](https://terminalcolors.com)
+3. [Vim themes](https://vimcolorschemes.com/i/trending)
