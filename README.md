@@ -1,6 +1,13 @@
 # Khanh DevSetup
 
+## Table of Contents
+
+- [Install Rosetta](#install-rosetta)
+- [Disable All Animations](#disable-all-animations)
+- [Neovim Setup](#neovim-setup)
+
 ## Install rosetta
+
 ```zsh
 softwareupdate --install-rosetta --agree-to-license
 ```
@@ -27,35 +34,16 @@ defaults write com.apple.Mail DisableSendAnimations -bool true
 defaults write com.apple.Mail DisableReplyAnimations -bool true
 ```
 
-## DevBox
-
-Install Devbox
-```
-curl -fsSL https://get.jetify.com/devbox | bash
-```
-[Documentation](https://www.jetify.com/docs/devbox/devbox_global/) to leverage Devbox as primary package manager.
-
-### Install dependencies
-Once Devbox is installed use it to install dependencies like bat, eza, Neovim, ripgrep, ect.
-```shell
-#Use the following command to list out global installed dependencies
-devbox global list
-
-#Install example
-devbox global add bat eza ripgrep
-
-#Removal example
-devbox global rm bat
-```
-
 ## Neovim Setup
+
+> Need to have nodejs installed for the typescript-language server and biome.
+> In addition leverage brew to install the following: biome, lua-language-server, marksman, stylua, typescript-language-server
+
 1. Clone this repo
 2. Move the nvim folder to .config/nvim
-3. Open nvim and Lazy should install plugins
-4. To check run ```:Lazy```
-
 
 # Create SSH key for github/gitlab
+
 ```
 mkdir ~/.ssh
 cd ~/.ssh
@@ -79,13 +67,14 @@ pbcopy < ~/.ssh/personal.pub
 ssh-add ~/.ssh/personal
 ssh -T git@github.com
 ```
+
 # Set Neovim as git editor
+
 git config --global core.editor "nvim"
 export GIT_EDITOR=nvim
 
-
-
 ## Other Useful Software
+
 1. [Raycast](https://www.raycast.com)
 2. [HiddenBar](https://github.com/dwarvesf/hidden)
 3. [Rectangle](https://rectangleapp.com)
@@ -93,4 +82,7 @@ export GIT_EDITOR=nvim
 5. [Harlequin](https://harlequin.sh)
 
 ## Additional Resources
+
 1. [MacOS Terminal Themes](https://github.com/lysyi3m/macos-terminal-themes/tree/master)
+2. [Terminal Themes](https://terminalcolors.com)
+3. [Vim themes](https://vimcolorschemes.com/i/trending)

@@ -1,8 +1,5 @@
-local augroup = vim.api.nvim_create_augroup
-local autocmd = vim.api.nvim_create_autocmd
-
 -- Prevent comment
-autocmd("bufEnter", {
+vim.api.nvim_create_autocmd("bufEnter", {
   group = vim.api.nvim_create_augroup("FormatOptions", {}),
   pattern = "*",
   callback = function()
@@ -11,14 +8,14 @@ autocmd("bufEnter", {
 })
 
 -- Remove trailing whitespaces
-autocmd('BufWritePre', {
+vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = '',
   command = '%s/\\s\\+$//e'
 })
 
 -- Highlight text on yank
-augroup('YankHighlight', { clear = true })
-autocmd('TextYankPost', {
+vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
   group = 'YankHighlight',
   callback = function()
     vim.highlight.on_yank({ higroup = 'IncSearch', timeout = '700' })
@@ -26,13 +23,13 @@ autocmd('TextYankPost', {
 })
 
 -- Automatically rebalance windows on vim resize
-autocmd('VimResized', {
+vim.api.nvim_create_autocmd('VimResized', {
   pattern = '',
   command = 'wincmd ='
 })
 
 -- Close man and help with just <q>
-autocmd('FileType', {
+vim.api.nvim_create_autocmd('FileType', {
   pattern = {
     'help',
     'man',
@@ -46,7 +43,7 @@ autocmd('FileType', {
 })
 
 -- Auto create dir when saving a file where some intermediate directory does not exist
-autocmd('BufWritePre', {
+vim.api.nvim_create_autocmd('BufWritePre', {
   callback = function(event)
     if event.match:match('^%w%w+://') then
       return
@@ -56,10 +53,13 @@ autocmd('BufWritePre', {
   end
 })
 
--- Check for spelling in text filetypes
-autocmd('FileType', {
-  pattern = { 'gitcommit', 'markdown' },
-  callback = function()
-    vim.opt_local.spell = true
-  end
+-- wrap, linebreak and spellcheck on markdown and text files
+vim.api.nvim_create_autocmd("FileType", {
+	group = vim.api.nvim_create_augroup("UserConfig", { clear = true }),
+	pattern = { "markdown", "text", "gitcommit" },
+	callback = function()
+		vim.opt_local.wrap = true
+		vim.opt_local.linebreak = true
+		vim.opt_local.spell = true
+	end,
 })

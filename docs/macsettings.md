@@ -1,10 +1,13 @@
->Go back to [README](../README.md)
+> Go back to [README](../README.md)
+
 # Mac System Preferences 🍎
 
 These are the common setting I set for my Macs.
 
 ## Disable Animations
+
 Use the code block below to disable animations for better performance.
+
 ```zsh
 #!/usr/bin/env bash
 set -euo pipefail
@@ -41,11 +44,14 @@ echo "For full effect, consider logging out and back in (or rebooting)."
 ```
 
 ## Generic Useful Settings
+
 Run the generic.sh to enable my general settings such as:
+
 - show hidden folders
 - show path in finder
 - enable tap to click
-ect
+  ect
+
 ```zsh
 #!/usr/bin/env bash
 set -euo pipefail
