@@ -21,5 +21,4 @@ alias ls='eza --oneline --group-directories-first --color=always --git --icons=a
 alias lsa='eza --all --long --group-directories-first --icons --header --time-style=long-iso --no-user'
 alias lst='eza --icons --color=auto --tree --level=2'
 
-
 eval "$(mise activate zsh)"
