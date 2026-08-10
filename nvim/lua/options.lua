@@ -62,3 +62,8 @@ opt.wildmode = "longest:full,full" -- complete longest common match, full comple
 opt.diffopt:append("linematch:60") -- improve diff display
 opt.redrawtime = 10000 -- increase neovim redraw tolerance
 opt.maxmempattern = 20000 -- increase max memory
+
+-- ============================================================================
+-- COLORSCHEME
+-- ============================================================================
+vim.cmd.colorscheme("catppuccin")

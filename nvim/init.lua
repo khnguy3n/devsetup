@@ -1,5 +1,10 @@
-require("options")
+vim.g.mapleader = " "
+
 require("autocmd")
+require("options")
 require("keymaps")
-require("plugins")
+require("oil")
 require("lsp")
+require("netrw")
+require("statusline")
+require("format")

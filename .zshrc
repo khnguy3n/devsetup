@@ -1,8 +1,7 @@
-# Devbox global environment
-if command -v devbox >/dev/null 2>&1; then
-  eval "$(devbox shellenv --config ~/.config/devbox/global)"
-fi
+autoload -U promptinit; promptinit
+prompt pure
 
+alias zgit="ziggity"
 alias ..="cd .."
 alias ...="cd ../.."
 alias c="clear"
@@ -22,5 +21,4 @@ alias ls='eza --oneline --group-directories-first --color=always --git --icons=a
 alias lsa='eza --all --long --group-directories-first --icons --header --time-style=long-iso --no-user'
 alias lst='eza --icons --color=auto --tree --level=2'
 
-# To replace cd with z
-eval "$(zoxide init --cmd cd zsh)"
+eval "$(mise activate zsh)"

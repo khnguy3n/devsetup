@@ -1,124 +1,41 @@
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = vim.tbl_deep_extend("force", capabilities, require("mini.completion").get_lsp_capabilities())
+-- ============================================================================
+-- LSP
+-- ============================================================================
+--vim.lsp.enable({ "lua_ls", "ts_ls" })
+vim.lsp.enable({ "lua_ls", "tsgo" })
+vim.diagnostic.config({ virtual_text = true })
 
-vim.lsp.config("*", { capabilities = capabilities })
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(ev)
+		local opts = { buffer = ev.buf, silent = true }
 
---vim.lsp.config("lua_ls", {
---    settings = {
---        Lua = {
---            diagnostics = { globals = { "vim" } },
---        },
---    },
---})
+		local client = vim.lsp.get_client_by_id(ev.data.client_id)
 
-local configs = {
-    lua_ls = {
-      cmd = { "lua-language-server" },
-      filetypes = { "lua" },
-      root_markers = {
-        { ".luarc.json", ".luarc.jsonc" },
-        { ".stylua.toml", "stylua.toml" },
-        { ".git" },
-      },
-      settings = {
-        Lua = {
-          diagnostics = { globals = { "vim" } },
-          codeLens = { enable = true },
-          hint = { enable = true, semicolon = "Disable" },
-        },
-      },
-    },
+		if client ~= nil and client:supports_method("textDocument/completion") then
+			vim.lsp.completion.enable(true, client.id, ev.buf, {
+				autotrigger = true,
+			})
+		end
 
-    marksman = {
-      cmd = { "marksman", "server" },
-      filetypes = { "markdown", "markdown.mdx" },
-      root_markers = { ".marksman.toml", ".git" },
-    },
+		vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts)
+		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+		vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+		vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
+		vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
+		vim.keymap.set("n", "ss", vim.lsp.buf.document_symbol, opts)
 
-    ts_ls = {
-      cmd = { "typescript-language-server", "--stdio" },
-      filetypes = {
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact",
-      },
-      root_markers = {
-        {
-          "package-lock.json",
-          "yarn.lock",
-          "pnpm-lock.yaml",
-          "bun.lock",
-          "bun.lockb",
-        },
-        { ".git" },
-      },
-    },
-
-    biome = {
-      cmd = { "biome", "lsp-proxy" },
-      filetypes = {
-        "astro",
-        "css",
-        "graphql",
-        "html",
-        "javascript",
-        "javascriptreact",
-        "json",
-        "jsonc",
-        "svelte",
-        "typescript",
-        "typescriptreact",
-        "vue",
-      },
-      workspace_required = true,
-      root_markers = { "biome.json", "biome.jsonc" },
-    },
-  }
-
-  for name, config in pairs(configs) do
-    vim.lsp.config(name, config)
-  end
-
-vim.lsp.enable({
-    "lua_ls",
-    "marksman",
-    "ts_ls",
-    "biome",
+		vim.keymap.set("n", "<leader>sS", function()
+			vim.ui.input({ prompt = "Symbol: " }, function(query)
+				if query then
+					vim.lsp.buf.workspace_symbol(query)
+				end
+			end)
+		end, opts)
+	end,
 })
 
-local diagnostic_signs = {
-	Error = " ",
-	Warn = " ",
-	Hint = "",
-	Info = "",
-}
-
-vim.diagnostic.config({
-	virtual_text = { prefix = "●", spacing = 4 },
-	signs = {
-		text = {
-			[vim.diagnostic.severity.ERROR] = diagnostic_signs.Error,
-			[vim.diagnostic.severity.WARN] = diagnostic_signs.Warn,
-			[vim.diagnostic.severity.INFO] = diagnostic_signs.Info,
-			[vim.diagnostic.severity.HINT] = diagnostic_signs.Hint,
-		},
-	},
-	underline = true,
-	update_in_insert = false,
-	severity_sort = true,
-	float = {
-		border = "rounded",
-		source = true,
-		header = "",
-		prefix = "",
-		focusable = false,
-		style = "minimal",
-	},
-})
-
--- ponytail: monkey-patch for rounded borders; cleaner if upstream adds a global option
-local orig_preview = vim.lsp.util.open_floating_preview
-vim.lsp.util.open_floating_preview = function(contents, syntax, opts, ...)
-  return orig_preview(contents, syntax, vim.tbl_extend("keep", opts or {}, { border = "rounded" }), ...)
-end
+vim.cmd("set completeopt+=noselect")
