@@ -24,4 +24,7 @@ defaults write com.apple.dock launchanim -bool false
 # Minimize windows using scale effect
 defaults write com.apple.dock mineffect -string scale
 
+# Disable ruberband animation
+defaults write -g NSScrollViewRubberbanding -int 0
+
 echo "Configuring Dock...⚓ Completed!"
