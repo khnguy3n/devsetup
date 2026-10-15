@@ -61,9 +61,16 @@ defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
 
 # Safari: enable the Develop menu and the Web Inspector
-defaults write com.apple.Safari IncludeDevelopMenu -bool true
-defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
-defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -bool true
+# Safari is sandboxed; writing its prefs requires the terminal app to have
+# Full Disk Access (System Settings > Privacy & Security > Full Disk Access).
+if defaults write com.apple.Safari IncludeDevelopMenu -bool true 2>/dev/null; then
+  defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+  defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -bool true
+else
+  echo "WARNING: Could not write Safari preferences (skipping)."
+  echo "  Grant your terminal Full Disk Access in System Settings > Privacy & Security,"
+  echo "  restart the terminal, and re-run, or enable it manually in Safari > Settings > Advanced."
+fi
 
 echo "Disabling / reducing macOS animations & visual effects..."
 
